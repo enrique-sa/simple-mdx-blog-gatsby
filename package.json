@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "simple-mdx-blog-gatsby",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
-  "version": "0.1.0",
+  "description": "A simplified blog starter for Gatsby",
+  "version": "0.2.0",
   "license": "0BSD",
   "scripts": {
     "build": "gatsby build",
@@ -14,17 +14,20 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
-    "@mdx-js/react": "^2.1.3",
-    "gatsby": "^4.22.1",
+    "@mdx-js/react": "^2.1.5",
+    "babel-plugin-styled-components": "^2.0.7",
+    "gatsby": "^5.0.1",
     "gatsby-plugin-google-fonts": "^1.0.1",
-    "gatsby-plugin-image": "^2.23.0",
-    "gatsby-plugin-mdx": "^4.2.0",
-    "gatsby-plugin-sharp": "^4.23.0",
-    "gatsby-remark-images": "^6.23.0",
-    "gatsby-source-filesystem": "^4.23.0",
-    "gatsby-transformer-sharp": "^4.23.0",
+    "gatsby-plugin-image": "^3.0.0",
+    "gatsby-plugin-mdx": "^5.0.0",
+    "gatsby-plugin-sharp": "^5.0.0",
+    "gatsby-plugin-styled-components": "^6.0.0",
+    "gatsby-remark-images": "^7.0.0",
+    "gatsby-source-filesystem": "^5.0.0",
+    "gatsby-transformer-sharp": "^5.0.0",
     "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "react-dom": "^18.1.0",
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
     "prettier": "^2.7.1"
