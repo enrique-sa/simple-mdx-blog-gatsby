@@ -26,7 +26,7 @@ export const P = styled.p`
         return "1.4375rem"
     }
   }};
-  text-decaoration: ${props => props.textDecoration ? props.textDecoration : "none"};
+  text-decoration: ${props => props.textDecoration ? props.textDecoration : "none"};
   font-weight: ${props => {
     switch (props.weight) {
       case "normal":
