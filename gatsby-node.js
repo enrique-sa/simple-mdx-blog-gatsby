@@ -1,4 +1,4 @@
-exports.createPages = async function ({ actions, graphql }) {
+exports.createPages = async function ({ graphql, actions, reporter }) {
   const { data } = await graphql(`
     query {
       allMdx(sort: { frontmatter: { date: DESC } }) {
@@ -8,11 +8,18 @@ exports.createPages = async function ({ actions, graphql }) {
               slug
             }
             id
+            internal {
+              contentFilePath
+            }
           }
         }
       }
     }
   `)
+
+  if (data.errors) {
+    reporter.panicOnBuild('There was an error loading your blog posts', data.errors)
+  }
 
   // Create paginated for posts
   const postPerPage = 3
@@ -33,12 +40,38 @@ exports.createPages = async function ({ actions, graphql }) {
 
   // Create single blog posts
   data.allMdx.edges.forEach(edge => {
+    const postTemplate = require.resolve(`./src/templates/singlePost.js`)
     const slug = edge.node.frontmatter.slug
     const id = edge.node.id
     actions.createPage({
       path: slug,
-      component: require.resolve(`./src/templates/singlePost.js`),
+      component: `${postTemplate}?__contentFilePath=${edge.node.internal.contentFilePath}`,
       context: {id},
     })
   })
+
+  // // Create single blog posts
+  // data.allMdx.edges.forEach(edge => {
+  //   const slug = edge.node.frontmatter.slug
+  //   const id = edge.node.id
+  //   actions.createPage({
+  //     path: slug,
+  //     component: require.resolve(`./src/templates/singlePost.js`),
+  //     context: {id},
+  //   })
+  // })
+
+
+  // // Create single blog posts
+  // data.allMdx.edges.forEach(edge => {
+  //   const path = require("path")
+  //   const postTemplate = path.resolve(`./src/templates/singlePost.js`)
+  //   const slug = edge.node.frontmatter.slug
+  //   const id = edge.node.id
+  //   actions.createPage({
+  //     path: slug,
+  //     component: `${postTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
+  //     context: {id},
+  //   })
+  // })
 }
