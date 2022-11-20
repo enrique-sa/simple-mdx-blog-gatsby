@@ -7,6 +7,6 @@ export const FeatureImageWrapper = styled.div`
   position: relative;
 
   @media ${props => props.theme.breakpoints.tablet} {
-    grid-column: 3 / span 6;
+    grid-column: 2 / span 6;
   }
 `

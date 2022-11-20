@@ -18,7 +18,7 @@ export const FeatureImage = ({ fixed }) => {
   
   return (
     <FeatureImageWrapper>
-      <GatsbyImage image={data.file.childImageSharp.gatsbyImageData} alt="hero-image" style={{
+      <GatsbyImage image={fixed ? fixed : data.file.childImageSharp.gatsbyImageData} alt="hero-image" style={{
         position: "absolute",
         left: 0,
         top: 0,
