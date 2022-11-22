@@ -109,7 +109,7 @@ export const PostWrapper = styled.main`
   }
 
   code {
-    font-style: ${props => props.theme.fonts.code};
+    font-family: ${props => props.theme.fonts.code};
     font-size: 1rem;
     line-height: 1.875rem;
     color: ${props => props.theme.colors.light1};

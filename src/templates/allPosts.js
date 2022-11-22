@@ -1,6 +1,12 @@
-import React from "react";
+import React from "react"
 import { graphql } from "gatsby"
-import { Container, Content, Card, FeatureImage, Pagination } from "../components"
+import {
+  Container,
+  Content,
+  Card,
+  FeatureImage,
+  Pagination,
+} from "../components"
 import { H1, P } from "../elements"
 
 const allPosts = ({ pageContext, data }) => {
@@ -19,10 +25,11 @@ const allPosts = ({ pageContext, data }) => {
           randowwwwwwwwww
         </H1>
         <P color="dark2" textAlign="center">
-          dfgdfg dfgfd gfd fd fdg fd gfdg fdg fdg fd gfd gfdg fdg fdg fdg fdgfdgfdgfd gfdg fdg fd gdf
+          dfgdfg dfgfd gfd fd fdg fd gfdg fdg fdg fd gfd gfdg fdg fdg fdg
+          fdgfdgfdgfd gfdg fdg fd gdf
         </P>
         {posts.map(post => (
-          <Card 
+          <Card
             key={post.node.frontmatter.slug}
             date={post.node.frontmatter.date}
             title={post.node.frontmatter.title}
@@ -31,7 +38,7 @@ const allPosts = ({ pageContext, data }) => {
           />
         ))}
       </Content>
-      <Pagination 
+      <Pagination
         isFirst={isFirst}
         isLast={isLast}
         prevPage={prevPage}
@@ -45,7 +52,7 @@ export default allPosts
 
 export const pageQuery = graphql`
   query AllPostsQuery($skip: Int!, $limit: Int!) {
-    allMdx(sort: {frontmatter: {date: DESC}}, skip: $skip, limit: $limit) {
+    allMdx(sort: { frontmatter: { date: DESC } }, skip: $skip, limit: $limit) {
       edges {
         node {
           frontmatter {

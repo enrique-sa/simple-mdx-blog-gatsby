@@ -1,8 +1,9 @@
 import React from "react"
 import { createGlobalStyle, ThemeProvider } from "styled-components"
-import { Table } from "./src/components"
 import { MDXProvider } from "@mdx-js/react"
 import Theme from "./src/themes/theme"
+import { Table, Code } from "./src/components"
+import "./language-tabs.css"
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -19,7 +20,14 @@ const GlobalStyles = createGlobalStyle`
 `
 
 const components = {
-  table: Table
+  table: Table,
+  code: ({ children, className }) => {
+    return className ? (
+      <Code className={className}>{children}</Code>
+    ) : (
+      <code>{children}</code>
+    )
+  },
 }
 
 export const wrapRootElement = ({ element }) => (

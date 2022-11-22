@@ -18,7 +18,10 @@ exports.createPages = async function ({ graphql, actions, reporter }) {
   `)
 
   if (data.errors) {
-    reporter.panicOnBuild('There was an error loading your blog posts', data.errors)
+    reporter.panicOnBuild(
+      "There was an error loading your blog posts",
+      data.errors
+    )
   }
 
   // Create paginated for posts
@@ -46,32 +49,7 @@ exports.createPages = async function ({ graphql, actions, reporter }) {
     actions.createPage({
       path: slug,
       component: `${postTemplate}?__contentFilePath=${edge.node.internal.contentFilePath}`,
-      context: {id},
+      context: { id },
     })
   })
-
-  // // Create single blog posts
-  // data.allMdx.edges.forEach(edge => {
-  //   const slug = edge.node.frontmatter.slug
-  //   const id = edge.node.id
-  //   actions.createPage({
-  //     path: slug,
-  //     component: require.resolve(`./src/templates/singlePost.js`),
-  //     context: {id},
-  //   })
-  // })
-
-
-  // // Create single blog posts
-  // data.allMdx.edges.forEach(edge => {
-  //   const path = require("path")
-  //   const postTemplate = path.resolve(`./src/templates/singlePost.js`)
-  //   const slug = edge.node.frontmatter.slug
-  //   const id = edge.node.id
-  //   actions.createPage({
-  //     path: slug,
-  //     component: `${postTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
-  //     context: {id},
-  //   })
-  // })
 }
